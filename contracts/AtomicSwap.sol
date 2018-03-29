@@ -121,4 +121,15 @@ contract AtomicSwap {
         swaps[_hashedSecret].emptied = true;
 	    Refunded(block.timestamp);
 	}
+
+    function getInitTimestamp(bytes20 _hashedSecret) public constant returns (uint) { return swaps[_hashedSecret].initTimestamp; }
+    function getRefundTime(bytes20 _hashedSecret) public constant returns (uint) { return swaps[_hashedSecret].refundTime; }
+    function getSecret(bytes20 _hashedSecret) public constant returns (bytes32) { return swaps[_hashedSecret].secret; }
+    function getInitiator(bytes20 _hashedSecret) public constant returns (address) { return swaps[_hashedSecret].initiator; }
+    function getParticipant(bytes20 _hashedSecret) public constant returns (address) { return swaps[_hashedSecret].participant; }
+    function getValue(bytes20 _hashedSecret) public constant returns (uint256) { return swaps[_hashedSecret].value; }
+    function getEmptied(bytes20 _hashedSecret) public constant returns (bool) { return swaps[_hashedSecret].emptied; }
+    function getState(bytes20 _hashedSecret) public constant returns (State) { return swaps[_hashedSecret].state; }
+
 }
+
